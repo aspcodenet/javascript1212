@@ -67,6 +67,19 @@ const showTable = function(moviesArray){
 
 }
 
+    // 1. Visa alla filmer som släpptes någon gång under 90-talet.
+    // 2. Visa alla filmer vars Actor-lista innehåller tre skådespelare 
+    // 3. Visa alla filmer som där någon av skådespelarna i filmen var äldre än 40 år när filmen gjordes
+    // 4. Visa alla skådespelare som är äldre än 50 år. Sortera skådespelarna på namn.
+    // 5. Visa alla skådespelare som har bokstaven "g" eller ”G” i sitt namn. 
+    // 6. Visa för alla skådespelare bara deras namn och ålder. TRANSFORM
+    // 7. Visa en lista innehållande filmtitel, regissör och antal skådespelare för alla filmer. TRANSFORM
+    // 8. Visa för alla filmer filmens titel, samt genomsnittliga åldern för skådespelarna i filmen TRANSFORM!
+    // 9. ta fram alla filmer som gjordes under 2000-talet och där regissören heter Martin Scorsese.Visa bara Titel, release år och regissör.
+    // 10. Visa alla skådespelare som är med i mer än en film. Visa också hur många filmer de är med i.
+    // 11.visa alla filmer vars årtal är senare än det genomsnittliga årtalet för alla filmer.Sortera resultatet på årtalet i stigande ordning(ascending).
+
+
 btn90.addEventListener("click",()=>{
     items = movies.filter(m=>m.year >= 1990 && m.year <= 1999)
     showTable(items)
