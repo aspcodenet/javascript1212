@@ -29,7 +29,7 @@ const actors = [
 const toActors = function(ids){
     result = []
     for(x of ids){
-        result.push(actors.filter(i=>i.id)[0]) 
+                result.push(actors.filter(i=>i.id == x)[0]) 
     }
     return result
 }
@@ -66,6 +66,8 @@ const showTable = function(moviesArray){
     }
 
 }
+
+console.log(movies)
 
     // 1. Visa alla filmer som släpptes någon gång under 90-talet.
     // 2. Visa alla filmer vars Actor-lista innehåller tre skådespelare 
