@@ -29,7 +29,7 @@ const actors = [
 const toActors = function(ids){
     result = []
     for(x of ids){
-                result.push(actors.filter(i=>i.id == x)[0]) 
+        result.push(actors.filter(i=>i.id == x)[0]) 
     }
     return result
 }
@@ -41,6 +41,12 @@ const Movie = function(id,title,director,year,actors){
     this.year = year;
     this.actors = toActors(actors);
 }
+
+const ChristmasWish = function(type,namn){
+    this.type = type;
+    this.namn = namn;
+}
+
 const movies = [
     new Movie(1,"Inception","Christopher Nolan",2010,[1,2,3]),
     new Movie(2, "There will be blood", "Paul Thomas Anderson", 2007,[4,5]),
@@ -56,6 +62,49 @@ const movies = [
 ]
 
 
+const m2 = movies.findIndex(m=>m.year < 2005)
+console.log(m2)
+
+
+// FindFirstOrDefault
+const m = movies.find(m=>m.year < 2005)
+console.log(m)
+// let summa2 = 0
+// for(let m of movies){
+//     summa2 = summa2 + m.year
+// }
+
+
+// // reduce REDUCERA EN ARRAY TILL ETT VÄRDE
+// const summa = movies.reduce(function(currentValue,movie){
+//     return currentValue + movie.year
+// },0)
+// console.log(summa)
+
+
+// some js ->  list.Any(p=>p.....)
+// finns det NÅN  som uppfyller kriteriet -> TRUE eller FALSE
+// finns det nån film med Martin Scorsese 
+// fel semantik - onödigt svårt kod - onödig kod 
+
+// let count = 0
+// for(let i = 0; i < movies.length; i++){
+//     if(movies[i].director === "Martin Scorsese" ){
+//         count = count +1
+//     }
+// }
+// if(count > 0){
+//     console.log("Japp vi har film/filmer med Martin Scorsese")
+// }
+let containsMovie = movies.some(m=>m.director === "Martin Scorsese")
+console.log(containsMovie)
+
+// C# All
+let containsMovie2 = movies.every(m=>m.director === "Martin Scorsese")
+console.log(containsMovie2)
+
+
+
 const showTable = function(moviesArray){
     allMoviesTBody.innerHTML = ""
     for(let i = 0; i < moviesArray.length;i++) { // hrmmm you do foreach if you'd like, much nicer! 
@@ -67,7 +116,67 @@ const showTable = function(moviesArray){
 
 }
 
-console.log(movies)
+console.log("**************************")
+//console.log(movies)
+// for(let i = 0; i < movies.length; i++){
+//     console.log(movies[i])
+// }
+for(let m of movies){
+    console.log(m)
+}
+movies.forEach(m=>{
+    console.log(m)
+});
+
+movies.forEach(function(m){
+    console.log(m)
+});
+
+
+///                  Where              Select  
+let wishes = movies.filter(m=>m.id > 8).map(m=>new ChristmasWish("Movie",m.title))
+console.log(wishes)
+
+
+// let result = []
+//  for(let i = 0; i < movies.length; i++){
+//      if(movies[i].year >= 2002){
+//         result.push(movies[i])
+//      }
+//  }
+
+
+
+// FILTER:
+
+//Visa alla filmer vars Actor-lista innehåller tre skådespelare 
+items = movies.filter(m=>m.actors.length === 3)
+console.log(items)
+
+
+
+//let newArray = movies.filter(m => m.year > 2002 && m.year < 2018 );
+let newArray = movies.filter(function(movie){
+    if(movie.year > 2020) return true;
+    return false;
+});
+console.log(newArray)
+
+
+console.log("**************************")
+
+
+// 1. HIGHER ORDER FUNCTIONS skicka in en funktion som en parameter List<Player> p; p.Where(p=>p.Jersey == 21);
+//              addEventListener("click",HIGHER ORDER FUNCTION)
+ // 2. Where -> Select  (C#) filtrera array och transformera    List<Player> p; p.Where(sddasdas).Select(m=>new ViewModel... )
+ // All .Any()   - Some() -  Every()
+
+ // C# Where -> Javascript filter
+ // C# Select -> Javascript map
+
+ 
+
+
 
     // 1. Visa alla filmer som släpptes någon gång under 90-talet.
     // 2. Visa alla filmer vars Actor-lista innehåller tre skådespelare 
